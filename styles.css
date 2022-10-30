@@ -1,0 +1,82 @@
+* {
+
+    padding: 0;
+    
+    margin: 0;
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    font-size: 100%;
+    
+}
+    
+:root {
+    
+    --dark-background: #4A4E69;
+    
+    --medium-background: #4a4e6909;
+    
+    --light-background: #F2E9E4;
+    
+    --light-accent: #C9ADA7;
+
+}
+
+body {
+    background-color: #c9ada732;
+}
+
+header {
+    background-color: var(--light-background);
+    color: var(--dark-background);
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+.play-area {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-board {
+    width: 50vw;
+    height: 50vw;
+    background-color: var(--light-accent);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+ 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    overflow: hidden;
+
+    border: 5px var(--dark-background) solid;
+    border-radius: 1rem;
+}
+
+.board-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-background);
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.board-cell:hover {
+    background-color: var(--medium-background);
+}
