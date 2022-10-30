@@ -3,6 +3,13 @@ const gameBoard = (() => {
     const gameBoardArray = ["X","O","","","","","","",""];
     const gameBoardCells = document.getElementById("game-board").children;
     const cellArray = Array.from(gameBoardCells);
+    const isCellOccupied = (cell) => { // returns true if theres a marker there, false if empty
+        if(gameBoardArray[cell] === "") {
+            return(false);
+        } else {
+            return(true);
+        }
+    }
     const placeSymbol = (playerSymbol, boardCell) => {
         gameBoardArray[boardCell] = playerSymbol;
     }
@@ -12,7 +19,10 @@ const gameBoard = (() => {
             element.textContent = gameBoardArray[cell];  
         }
     }
-    return {updateBoard, placeSymbol, cellArray};
+    const getCellArray = () => {
+        return(cellArray);
+    }
+    return {updateBoard, placeSymbol, getCellArray, isCellOccupied};
 })();
 
 
@@ -23,14 +33,24 @@ const gameController = (() => {
     // determine which player goes first
     // make move
     const playTurn = (player) => {
-        let board = gameBoard.cellArray
+        let board = gameBoard.getCellArray();
         for(let cell = 0; cell < board.length; cell++) {
             ['click', 'touchend'].forEach(evt =>
             board[cell].addEventListener(evt, () => {
-                gameBoard.placeSymbol(player.boardSymbol, cell);
-                gameBoard.updateBoard();
+                if(gameBoard.isCellOccupied(cell) === false) {
+                    gameBoard.placeSymbol(player.boardSymbol, cell);
+                    gameBoard.updateBoard();
+                    endTurn();
+                } else {
+                    console.log("This cell is already played, choose another!");
+                    return
+                }
+
             }))
         }
+    }
+    const endTurn = () => {
+        console.log("end Turn");
     }
     return {playTurn};
 })();
@@ -47,6 +67,7 @@ const Player = (name, boardSymbol) => {
 
 const player1 = Player("Carson", "M");
 const player2 = Player("AI", "T");
+gameBoard.updateBoard();
 gameController.playTurn(player1);
 
-gameBoard.updateBoard();
+
