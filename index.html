@@ -34,6 +34,48 @@
             <div class="board-cell" id="cell-9"></div>
         </div>
 
+        <div class="control-panel">
+            <div>
+                <p>Current Player:</p><p id="current-player"></p>
+            </div>
+            <button id="reset-game">Start Game!</button>
+        </div>
+
+        <div id="player1-menu" class="player-config">
+            <h2>Player 1</h2>
+            <form action="">
+                <div>
+                    <label for="name">Player Name</label>
+                    <input type="text" name="name" id="player1-name" maxlength="12">
+                </div>
+
+                <div>
+                    <label for="symbol">Symbol</label>
+                    <input type="text" name="symbol" minlength="1" id="player1-symbol" maxlength="1">
+                </div>
+
+                <button type="button" id="player1-save">Save</button>
+            </form>
+
+        </div>
+
+        <div id="player2-menu" class="player-config">
+            <h2>Player 2</h2>
+            <form action="">
+                <div>
+                    <label for="name">Player Name</label>
+                    <input type="text" name="name" id="player2-name" maxlength="12">
+                </div>
+
+                <div>
+                    <label for="symbol">Symbol</label>
+                    <input type="text" name="symbol" minlength="1" id="player2-symbol" maxlength="1">
+                </div>
+
+                <button type="button" id="player2-save">Save</button>
+            </form> 
+
+        </div>
     </section>
 
 

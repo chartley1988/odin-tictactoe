@@ -67,7 +67,8 @@ const gameController = (() => {
             [board[0],board[3],board[6]],
             [board[2],board[5],board[8]],
             [board[0],board[4],board[8]],
-            [board[2],board[4],board[6]]
+            [board[2],board[4],board[6]],
+            [board[1],board[4],board[7]]
         ];
         winConditions.forEach(condition => {
             if(checkWinCondition(condition)){
@@ -154,5 +155,4 @@ const Player = (name, boardSymbol) => {
 const player1 = Player("Carson", "C");
 const player2 = Player("Leah", "L");
 gameController.playGame();
-
 
