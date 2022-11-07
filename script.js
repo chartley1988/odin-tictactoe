@@ -15,10 +15,12 @@ const gameController = (() => {
     }
 
     const initializeGame = () => {
+        gameController.player1 = {name: "", boardSymbol: "", ai: false};
+        gameController.player2 = {name: "", boardSymbol: "", ai: false};
         player1 = uiController.makePlayer1();
         player2 = uiController.makePlayer2();
         gameController.turnCount = 0;
-        gameController.playerTurn = 0;
+        gameController.playerTurn = gameController.player1;
         gameController.win = false;
         gameBoard.resetBoard();
         const banner = document.getElementById("current-player-label");
@@ -31,7 +33,7 @@ const gameController = (() => {
         for(let cell = 0; cell < board.length; cell++) {
             ['click', 'touchend'].forEach(evt =>
             board[cell].addEventListener(evt, () => {
-                if(!win){
+                if(!gameController.win){
                     if(gameBoard.isCellOccupied(cell) === false) {
                         gameBoard.placeSymbol(gameController.playerTurn.boardSymbol, cell);
                         if(checkForWin()){
@@ -49,7 +51,7 @@ const gameController = (() => {
     }
     //------------------------
     const endTurn = () => {
-        if(!win){
+        if(!gameController.win){
             if(gameController.playerTurn === gameController.player1){
                 gameController.playerTurn = gameController.player2;
             } else {
@@ -99,10 +101,10 @@ const gameController = (() => {
                 uiController.currentPlayer.textContent = (
                     `${gameController.playerTurn.name} wins!`
                 );
-                win = true;
+                gameController.win = true;
             };
         });
-        if(win) return(true);
+        if(gameController.win) return(true);
     }
     const checkPlayerInfo = (player) => { // Validates whether player info has been entered correctly
         if((player.name !== "") && (player.boardSymbol !== "")) {
@@ -149,6 +151,7 @@ const gameBoard = (() => {
             gameBoardArray[cell] = "";
         }
         updateBoard();
+
     }
 
     const isCellOccupied = (cell) => { // returns true if theres a marker there, false if empty
@@ -282,7 +285,6 @@ const uiController = (() => {
     }
 
     const startGameButton = () => gameButton.addEventListener('click', () => {
-        console.log(gameController.win);
         if (gameController.win === false) {
             if (gameController.turnCount === 0) {
                 gameController.playGame();
@@ -297,6 +299,7 @@ const uiController = (() => {
             updateStartButton();
             const banner = document.getElementById("current-player-label");
             banner.textContent = "Enter Player Stats"
+            startGameButton();
         }
     })
 
