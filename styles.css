@@ -14,13 +14,9 @@
     
     --dark-background: #4A4E69;
     --darker-background: #2a2d3d;
-    
     --medium-background: #4a4e6909;
-    
     --light-background: #F2E9E4;
-    
     --light-accent: #C9ADA7;
-
 }
 
 body {
@@ -82,7 +78,6 @@ h4 {
     border: 5px var(--dark-background) solid;
     border-radius: 1rem;
 
-    opacity: 30%; /* This animates to show the board when game starts */
 }
 
 .board-cell {
@@ -110,6 +105,18 @@ h4 {
     font-weight: 700;
 }
 
+.control-panel {
+    justify-content: stretch;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
 .control-panel > div {
     padding: 1rem;
     background-color: var(--dark-background);
@@ -121,7 +128,11 @@ h4 {
     background-color: var(--medium-background);
 }
 
-#reset-game {
+#current-player {
+    opacity: 50%;
+}
+
+#start-reset {
     padding: 1rem;
     background-color: var(--dark-background); 
     border-radius: 1rem;
@@ -131,7 +142,8 @@ h4 {
     font-weight: 700;
 }
 
-#reset-game:hover {
+
+#start-reset:hover {
     background-color: var(--darker-background);
 }
 
@@ -173,8 +185,8 @@ input {
     grid-row: 1/2;
 }
 
-#player1-menu {
-   grid-template-columns: 3/4;
+#player2-menu {
+   grid-column: 3/4;
    grid-row: 1/2; 
 }
 
@@ -191,4 +203,9 @@ form > button {
 
 form > button:hover {
     background-color: var(--light-accent); 
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 30%;
 }

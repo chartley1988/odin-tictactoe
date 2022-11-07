@@ -22,7 +22,7 @@
 
     <section class="play-area">
 
-        <div id="game-board">
+        <div id="game-board" class="disabled">
             <div class="board-cell" id="cell-1"></div>
             <div class="board-cell" id="cell-2"></div>
             <div class="board-cell" id="cell-3"></div>
@@ -36,9 +36,9 @@
 
         <div class="control-panel">
             <div>
-                <p>Current Player:</p><p id="current-player"></p>
+                <p id="current-player-label">Current Player:</p><p id="current-player"></p>
             </div>
-            <button id="reset-game">Start Game!</button>
+            <button id="start-reset">Start Game!</button>
         </div>
 
         <div id="player1-menu" class="player-config">
@@ -46,17 +46,16 @@
             <form action="">
                 <div>
                     <label for="name">Player Name</label>
-                    <input type="text" name="name" id="player1-name" maxlength="12">
+                    <input type="text" name="name" maxlength="12">
                 </div>
 
                 <div>
                     <label for="symbol">Symbol</label>
-                    <input type="text" name="symbol" minlength="1" id="player1-symbol" maxlength="1">
+                    <input type="text" name="symbol" minlength="1" maxlength="1">
                 </div>
 
-                <button type="button" id="player1-save">Save</button>
+                <button type="button" name="save">Save</button>
             </form>
-
         </div>
 
         <div id="player2-menu" class="player-config">
@@ -64,18 +63,16 @@
             <form action="">
                 <div>
                     <label for="name">Player Name</label>
-                    <input type="text" name="name" id="player2-name" maxlength="12">
+                    <input type="text" name="name" maxlength="12">
                 </div>
 
                 <div>
                     <label for="symbol">Symbol</label>
-                    <input type="text" name="symbol" minlength="1" id="player2-symbol" maxlength="1">
+                    <input type="text" name="symbol" minlength="1" maxlength="1">
                 </div>
 
-                <button type="button" id="player2-save">Save</button>
-            </form> 
-
-        </div>
+                <button type="button" name="save">Save</button>
+            </form>
     </section>
 
 
